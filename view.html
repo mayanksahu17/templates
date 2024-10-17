@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Management</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffffff;
+            color: #333333;
+            margin: 0;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            background-color: #5932EA;
+            color: #ffffff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #4a29c1;
+        }
+        .btn-icon {
+            padding: 0.5rem;
+        }
+        input[type="text"] {
+            background-color: #ffffff;
+            color: #333333;
+            border: 1px solid #5932EA;
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            width: 200px;
+        }
+        .grid {
+            display: grid;
+            gap: 1rem;
+        }
+        .grid-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+        .grid-4 {
+            grid-template-columns: 1fr 3fr;
+        }
+        .card {
+            background-color: #f8f8f8;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(89, 50, 234, 0.1), 0 2px 4px -1px rgba(89, 50, 234, 0.06);
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #5932EA;
+        }
+        .card-content {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin: 2rem 0;
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .sidebar .btn {
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+        .sidebar .btn svg {
+            margin-right: 0.5rem;
+        }
+        .hired-easy {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            color: #5932EA;
+        }
+        .hired-easy svg {
+            color: #5932EA;
+            margin-right: 0.5rem;
+        }
+        .file-upload {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .file-upload label {
+            flex-grow: 1;
+        }
+        .preview {
+            height: 16rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666666;
+        }
+        img.preview-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+            
+.main-content {
+    width: 75%;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+        .search-container .input {
+    flex-grow: 1;
+    margin-left: 0.5rem;
+}
+
+.job-list-header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    font-weight: bold;
+    padding: 0.5rem;
+    background-color: var(--hover-color);
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    background-color: #ccc;
+}
+
+.input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+    .resumeList{
+        display: flex;
+    }
+ 
+.hidden {
+            display: none;
+        }
+    </style>
+</head><body>
+    <div class="container">
+        <header>
+            <div style="display: flex; align-items: center; gap: 1rem;">
+                <button class="btn btn-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                </button>
+                <input type="text" placeholder="Name / Email">
+            </div>
+            <button class="btn" onclick="toggleSection('uploadSection')">Add Job Roles</button>
+        </header>
+
+        <div class="grid grid-3">
+            <div class="card">
+                <div class="card-title">Applications from db1</div>
+                <div class="card-content">0</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Applications from db2</div>
+                <div class="card-content">0</div>
+            </div>
+            <div class="card">
+                <div class="card-title">Total Applications</div>
+                <div class="card-content">0</div>
+            </div>
+        </div>
+
+        <h1>Job Management</h1>
+
+        <div class="grid grid-4">
+            <div class="sidebar">
+                <button class="btn" onclick="toggleSection('uploadSection')">
+                    Upload Jobs
+                </button>
+                <button class="btn" onclick="toggleSection('applyJobsSection')">
+                    Apply Jobs
+                </button>
+                <button class="btn" onclick="toggleSection('deleteJobsSection')">
+                    Delete Jobs
+                </button>
+                <button class="btn" onclick="toggleSection('downloadResumeSection')">
+                    Download Resume
+                </button>
+            </div>
+
+            <!-- Upload Jobs Section -->
+            <div id="uploadSection" class="main-content ">
+                <div class="card" style="margin-bottom: 1rem;">
+                    <div class="card-title">Upload CSV or Excel File</div>
+                    <div class="file-upload">
+                        <label for="file-upload" class="btn" style="display: inline-block;">
+                            Choose File
+                        </label>
+                        <input id="file-upload" type="file" style="display: none;" onchange="previewFile()">
+                        <button class="btn">Upload</button>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-title">Preview</div>
+                    <div class="preview" id="file-preview">
+                        File preview will appear here
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apply Jobs Section -->
+            <div id="applyJobsSection" class="main-content hidden">
+                <div class="search-container">
+                    <input type="text" id="searchInput" class="input" placeholder="Search for jobs">
+                </div>
+                <div class="job-list-header">
+                    <div>Job Title</div>
+                    <div>Company</div>
+                    <div>Apply Link</div>
+                </div>
+                <div id="jobList">
+                    <!-- Job list goes here -->
+                    <div>Sample Job 1</div>
+                    <div>Sample Company</div>
+                    <div><a href="#">Apply Now</a></div>
+                </div>
+            </div>
+
+            <!-- Delete Jobs Section -->
+            <div id="deleteJobsSection" class="main-content hidden">
+                <div class="search-container">
+                    <input type="text" id="deleteSearchInput" class="input" placeholder="Search for jobs to delete">
+                </div>
+                <div class="job-list-header">
+                    <div>Job Title</div>
+                    <div>Company</div>
+                    <div>Delete</div>
+                </div>
+                <div id="deleteJobList">
+                    <!-- Job delete list goes here -->
+                    <div>Sample Job 1</div>
+                    <div>Sample Company</div>
+                    <div><button>Delete</button></div>
+                </div>
+            </div>
+
+            <!-- Download Resume Section -->
+            <div id="downloadResumeSection" class="main-content hidden">
+                <div class="search-container">
+                    <input type="text" id="resumeSearchInput" class="input" placeholder="Search for resumes">
+                </div>
+                <div class="job-list-header">
+                    <div>Filename</div>
+                    <div>Date</div>
+                    <div>Action</div>
+                </div>
+                <div id="resumeList">
+                    <!-- Resume list goes here -->
+                    <div>sd.pdf</div>
+                    <div>23-02-2023</div>
+                    <div>
+                        <a href="#">Download Resume</a>
+                        <button class="btn" >Delete job</button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Function to preview the file
+        function previewFile() {
+            const preview = document.getElementById('file-preview');
+            const file = document.getElementById('file-upload').files[0];
+            const reader = new FileReader();
+
+            if (file) {
+                if (file.type.startsWith('image/')) {
+                    reader.onload = function(event) {
+                        preview.innerHTML = '<img class="preview-image" src="' + event.target.result + '">';
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    preview.innerHTML = '<p>' + file.name + '</p>';
+                }
+            } else {
+                preview.innerHTML = 'No file selected';
+            }
+        }
+
+        // Function to toggle the visibility of sections
+        function toggleSection(sectionId) {
+            // Hide all sections
+            const sections = ['uploadSection', 'applyJobsSection', 'deleteJobsSection', 'downloadResumeSection'];
+            sections.forEach(id => {
+                document.getElementById(id).classList.add('hidden');
+            });
+            // Show the selected section
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

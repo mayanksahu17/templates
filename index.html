@@ -136,6 +136,8 @@
             color: #5932EA;
             font-weight: bold;
         }
+    
+
     </style>
 </head>
 <body>
@@ -297,7 +299,7 @@
                     sections.forEach(section => section.classList.remove('active-section'));
 
                     // Add active class to the clicked nav item
-                    item.classList.add('active');
+                    item.classList.add('active');   
 
                     // Show the corresponding section
                     const sectionToShow = document.querySelector(`.${item.dataset.section}`);

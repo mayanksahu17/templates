@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            display: flex;
+            background-color: #f7f7f7;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 40px;
+        }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            color: #5932EA;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .nav-item:hover, .nav-item.active {
+            background-color: #5932EA;
+            color: white;
+        }
+        .nav-item svg {
+            margin-right: 10px;
+        }
+        .upgrade-card {
+            background-color: #F1EFFE;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: auto;
+        }
+        .upgrade-button {
+            background-color: #5932EA;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .main-content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        .greeting {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .search-bar {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 200px;
+        }
+        .client-list, .leads-list, .roles-list {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            display: none; 
+        }
+        .client-list.active-section, .leads-list.active-section, .roles-list.active-section {
+            display: block;
+        }
+        .list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        .status {
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        .active {
+            background-color: #16C098;
+            color: white;
+        }
+        .inactive {
+            background-color: #FFC5C5;
+            color: #DF0404;
+        }
+        .pagination {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .page-numbers {
+            display: flex;
+            gap: 10px;
+        }
+        .page-numbers span {
+            cursor: pointer;
+        }
+        .page-numbers span.active {
+            color: #5932EA;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">Dashboard</div>
+        <a href="#" class="nav-item active" data-section="client-list">Clients</a>
+        <a href="#" class="nav-item" data-section="leads-list">Leads</a>
+        <a href="#" class="nav-item" data-section="roles-list">Roles</a>
+        <div class="upgrade-card">
+            <p>Upgrade to PRO to get access to all Features!</p>
+            <button class="upgrade-button">Get Pro Now!</button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1 class="greeting">Hello Evano 👋,</h1>
+            <input type="text" class="search-bar" placeholder="Search">
+        </div>
+
+        <!-- Client Section -->
+        <div class="client-list active-section">
+            <div class="list-header">
+                <h2>All Clients</h2>
+                <select>
+                    <option>Newest</option>
+                    <option>Oldest</option>
+                </select>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jane Cooper</td>
+                        <td>jane@microsoft.com</td>
+                        <th>View</th>
+                        <td><span class="status active">Active</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pagination">
+                <p>Showing data 1 to 8 of 256K entries</p>
+                <div class="page-numbers">
+                    <span>&lt;</span>
+                    <span class="active">1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>...</span>
+                    <span>40</span>
+                    <span>&gt;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leads Section -->
+        <div class="leads-list">
+            <div class="list-header">
+                <h2>All Leads</h2>
+                <select>
+                    <option>Newest</option>
+                    <option>Oldest</option>
+                </select>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jane Cooper</td>
+                        <td>jane@microsoft.com</td>
+                        <th>View</th>
+                        <td><span class="status active">Active</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pagination">
+                <p>Showing data 1 to 8 of 256K entries</p>
+                <div class="page-numbers">
+                    <span>&lt;</span>
+                    <span class="active">1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>...</span>
+                    <span>40</span>
+                    <span>&gt;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Roles Section -->
+        <div class="roles-list">
+            <div class="list-header">
+                <h2>All Roles</h2>
+                <select>
+                    <option>Newest</option>
+                    <option>Oldest</option>
+                </select>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jane Cooper</td>
+                        <td>jane@microsoft.com</td>
+                        <th>View</th>
+                        <td><span class="status active">Active</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pagination">
+                <p>Showing data 1 to 8 of 256K entries</p>
+                <div class="page-numbers">
+                    <span>&lt;</span>
+                    <span class="active">1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>...</span>
+                    <span>40</span>
+                    <span>&gt;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('.main-content > div');
+
+            navItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    // Remove active class from all nav items and hide sections
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    sections.forEach(section => section.classList.remove('active-section'));
+
+                    // Add active class to the clicked nav item
+                    item.classList.add('active');
+
+                    // Show the corresponding section
+                    const sectionToShow = document.querySelector(`.${item.dataset.section}`);
+                    sectionToShow.classList.add('active-section');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

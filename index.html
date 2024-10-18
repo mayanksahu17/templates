@@ -82,16 +82,16 @@
             border-radius: 8px;
             width: 200px;
         }
-        .client-list, .leads-list, .roles-list {
+        .client-list, .leads-list, .roles-list, .emails-list {
             background-color: white;
             padding: 20px;
             border-radius: 8px;
             display: none; 
         }
-        .client-list.active-section, .leads-list.active-section, .roles-list.active-section {
+        .client-list.active-section, .leads-list.active-section, .roles-list.active-section, .emails-list.active-section {
             display: block;
         }
-        .list-header {
+        .list-header {  
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -146,6 +146,7 @@
         <a href="#" class="nav-item active" data-section="client-list">Clients</a>
         <a href="#" class="nav-item" data-section="leads-list">Leads</a>
         <a href="#" class="nav-item" data-section="roles-list">Roles</a>
+        <a href="#" class="nav-item" data-section="emails-list">Emails</a>
         <div class="upgrade-card">
             <p>Upgrade to PRO to get access to all Features!</p>
             <button class="upgrade-button">Get Pro Now!</button>
@@ -181,7 +182,12 @@
                         <td>Jane Cooper</td>
                         <td>jane@microsoft.com</td>
                         <th>View</th>
-                        <td><span class="status active">Active</span></td>
+                        <td>
+                            <select name="" id="">
+                             <option value="active">active</option>
+                             <option value="none">none</option>
+                        </select>
+                    </td>
                     </tr>
                 </tbody>
             </table>
@@ -246,6 +252,48 @@
         <div class="roles-list">
             <div class="list-header">
                 <h2>All Roles</h2>
+                <select>
+                    <option>Newest</option>
+                    <option>Oldest</option>
+                </select>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Customer Name</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Jane Cooper</td>
+                        <td>jane@microsoft.com</td>
+                        <th>View</th>
+                        <td><span class="status active">Active</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="pagination">
+                <p>Showing data 1 to 8 of 256K entries</p>
+                <div class="page-numbers">
+                    <span>&lt;</span>
+                    <span class="active">1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>...</span>
+                    <span>40</span>
+                    <span>&gt;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Emails Section -->
+        <div class="emails-list">
+            <div class="list-header">
+                <h2>All Emails</h2>
                 <select>
                     <option>Newest</option>
                     <option>Oldest</option>

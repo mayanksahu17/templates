@@ -158,6 +158,56 @@
 .hidden {
             display: none;
         }
+
+    /* General styles for table structure */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      margin: 20px auto;
+      text-align: left;
+      border: 1px solid #333; /* Adding the border to the table */
+      border-radius: 10px; /* Adding border-radius to the table */
+      background-color: #f9f9f9; /* Background color for the table */
+      overflow: hidden; /* Ensures that content inside rounded table doesn't overflow */
+    }
+    /* Header row styles */
+    thead tr {
+      border-bottom: 2px solid #333;
+    }
+
+    /* Styling for table cells */
+    th, td {
+      padding: 12px;
+      border: 1px solid #ddd;
+    }
+
+    /* Hover effect for rows */
+    tbody tr:hover {
+      background-color: #f2f2f2;
+    }
+
+    /* Styling for header row */
+    th {
+      background-color: #5932EA;
+      color: white;
+    }
+
+    /* Styling for download buttons */
+    button {
+      background-color: #5932EA;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    /* Hover effect for download buttons */
+    button:hover {
+      background-color: #7959ed;
+    }
     </style>
 </head><body>
     <div class="container">
@@ -166,9 +216,12 @@
                <a href="/index.html">  <button class="btn btn-icon">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
                     </button> </a> 
-                <input type="text" placeholder="Name / Email">
+                <h2>Hello Evano 👋,</h2>
             </div>
+            <div>
+            <input type="text" placeholder="Search">
             <button class="btn" onclick="toggleSection('uploadSection')">Add Job Roles</button>
+            </div>
         </header>
 
         <div class="grid grid-3">
@@ -229,17 +282,39 @@
                 <div class="search-container">
                     <input type="text" id="searchInput" class="input" placeholder="Search for jobs">
                 </div>
-                <div class="job-list-header">
-                    <div>Job Title</div>
-                    <div>Company</div>
-                    <div>Apply Link</div>
-                </div>
                 <div id="jobList">
-                    <!-- Job list goes here -->
-                    <div>Sample Job 1</div>
-                    <div>Sample Company</div>
-                    <div><a href="#">Apply Now</a></div>
-                </div>
+                    <table border-radius: 10px>
+                      <thead>
+                        <tr>
+                          <th>Job Title</th>
+                          <th>Company</th>
+                          <th>Apply Link</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Sample Job 1</td>
+                          <td>Sample Company</td>
+                          <td><a href="#">Apply Now</a></td>
+                        </tr>
+                        <tr>
+                          <td>Software Engineer</td>
+                          <td>Tech Solutions</td>
+                          <td><a href="https://example.com/apply">Apply Now</a></td>
+                        </tr>
+                        <tr>
+                          <td>Data Scientist</td>
+                          <td>DataWorks Inc.</td>
+                          <td><a href="https://example.com/apply">Apply Now</a></td>
+                        </tr>
+                        <tr>
+                          <td>Product Manager</td>
+                          <td>InnovateTech</td>
+                          <td><a href="https://example.com/apply">Apply Now</a></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
             </div>
 
             <!-- Delete Jobs Section -->
@@ -247,17 +322,40 @@
                 <div class="search-container">
                     <input type="text" id="deleteSearchInput" class="input" placeholder="Search for jobs to delete">
                 </div>
-                <div class="job-list-header">
-                    <div>Job Title</div>
-                    <div>Company</div>
-                    <div>Delete</div>
-                </div>
-                <div id="deleteJobList">
-                    <!-- Job delete list goes here -->
-                    <div>Sample Job 1</div>
-                    <div>Sample Company</div>
-                    <div><button>Delete</button></div>
-                </div>
+
+                <div id="jobList">
+                    <table border-radius: 10px>
+                      <thead>
+                        <tr>
+                          <th>Job Title</th>
+                          <th>Company</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Sample Job 1</td>
+                          <td>Sample Company</td>
+                          <td><button>Delete</button></td>
+                        </tr>
+                        <tr>
+                          <td>Software Engineer</td>
+                          <td>Tech Solutions</td>
+                          <td><button>Delete</button></td>
+                        </tr>
+                        <tr>
+                          <td>Data Scientist</td>
+                          <td>DataWorks Inc.</td>
+                          <td><button>Delete</button></td>
+                        </tr>
+                        <tr>
+                          <td>Product Manager</td>
+                          <td>InnovateTech</td>
+                          <td><button>Delete</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
             </div>
 
             <!-- Download Resume Section -->
@@ -265,21 +363,39 @@
                 <div class="search-container">
                     <input type="text" id="resumeSearchInput" class="input" placeholder="Search for resumes">
                 </div>
-                <div class="job-list-header">
-                    <div>Filename</div>
-                    <div>Date</div>
-                    <div>Action</div>
-                </div>
-                <div id="resumeList">
-                    <!-- Resume list goes here -->
-                    <div>sd.pdf</div>
-                    <div>23-02-2023</div>
-                    <div>
-                        <a href="#">Download Resume</a>
-                        <button class="btn" >Delete job</button>
-
-                    </div>
-                </div>
+                <div id="jobList">
+                    <table border-radius: 10px >
+                      <thead>
+                        <tr>
+                          <th>File Name</th>
+                          <th>Date</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>Resume_John_Doe.pdf</td>
+                          <td>2024-10-18</td>
+                          <td><button>Download Resume</button></td>
+                        </tr>
+                        <tr>
+                          <td>Resume_Jane_Smith.docx</td>
+                          <td>2024-10-17</td>
+                          <td><button>Download Resume</button></td>
+                        </tr>
+                        <tr>
+                          <td>Resume_Alex_Jones.pdf</td>
+                          <td>2024-10-16</td>
+                          <td><button>Download Resume</button></td>
+                        </tr>
+                        <tr>
+                          <td>Resume_Sam_Taylor.docx</td>
+                          <td>2024-10-15</td>
+                          <td><button>Download Resume</button></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
             </div>
 
         </div>

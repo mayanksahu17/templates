@@ -24,6 +24,15 @@
             display: flex;
             flex-direction: column;
         }
+        .btn {
+            background-color: #4e22ec;
+            color: #ffffff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
         .logo {
             font-size: 24px;
             font-weight: bold;
@@ -161,7 +170,7 @@
         <div class="client-list active-section">
             <div class="list-header">
                 <h2>All Clients</h2>
-                <select>
+                <select class="btn" >
                     <option>Newest</option>
                     <option>Oldest</option>
                 </select>
@@ -181,7 +190,7 @@
                         <td>jane@microsoft.com</td>
                         <th>View</th>
                         <td>
-                            <select name="" id="">
+                            <select class="btn" name="" id="">
                              <option value="active">active</option>
                              <option value="none">non-active</option>
                         </select>
@@ -208,7 +217,7 @@
         <div class="leads-list">
             <div class="list-header">
                 <h2>All Leads</h2>
-                <select>
+                <select class="btn" >
                     <option>Newest</option>
                     <option>Oldest</option>
                 </select>
@@ -250,7 +259,7 @@
         <div class="roles-list">
             <div class="list-header">
                 <h2>All Roles</h2>
-                <select>
+                <select class="btn" >
                     <option>Newest</option>
                     <option>Oldest</option>
                 </select>
@@ -291,32 +300,39 @@
         <!-- Emails Section -->
         <div class="emails-list">
             <div class="list-header">
-                <h2>All Emails</h2>
-                <select>
-                    <option>Newest</option>
-                    <option>Oldest</option>
-                </select>
+                <h2>All HR Emails</h2>
+                <div>
+                    <button class="btn">Upload .xlsx, .xls</button>
+                    <button class="btn">Edit</button>
+                    <select class="btn" >
+                        <option>Newest</option>
+                        <option>Oldest</option>
+                    </select>
+                </div>
+
             </div>
             <table>
                 <thead>
                     <tr>
-                        <th>Customer Name</th>
-                        <th>Email</th>
-                        <th>Actions</th>
+                        <th>Name</th>
+                        <th>Company</th>
+                        <th>E-mail</th>
                         <th>Status</th>
+                        <th>Copy</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Jane Cooper</td>
-                        <td>jane@microsoft.com</td>
-                        <th>View</th>
+                        <td>jane</td>
+                        <td>xyz private limited</td>
+                        <th>demo@gamil.com</th>
                         <td><span class="status active">Active</span></td>
+                        <td><span class="btn">Copy</span></td>
                     </tr>
                 </tbody>
             </table>
             <div class="pagination">
-                <p>Showing data 1 to 8 of 256K entries</p>
+                <p>Showing data 1 to 8 of 256 entries</p>
                 <div class="page-numbers">
                     <span>&lt;</span>
                     <span class="active">1</span>
